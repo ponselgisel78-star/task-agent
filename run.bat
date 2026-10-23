@@ -1,23 +1,12 @@
 @echo off
 title Task Automation Agent
-cd /d "%~dp0"
+set "PROJECT_DIR=C:\Users\sang1\.gemini\antigravity\scratch\task-agent"
+cd /d "%PROJECT_DIR%"
+set "PYTHONPATH=%PROJECT_DIR%"
 
-echo ========================================================
 echo Starting Task Automation Agent...
-echo ========================================================
-
-if not exist ".venv\Scripts\python.exe" (
-    echo [ERROR] Virtual environment not found (.venv)!
-    echo Please ensure the project dependencies are installed.
-    pause
-    exit /b 1
-)
-
-:: Run Agent with virtualenv python
-".venv\Scripts\python.exe" cli.py
+"%PROJECT_DIR%\.venv\Scripts\python.exe" "%PROJECT_DIR%\cli.py"
 
 echo.
-echo ========================================================
 echo Agent session ended.
-echo ========================================================
 pause
